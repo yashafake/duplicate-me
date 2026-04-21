@@ -1,0 +1,22 @@
+## Node / Electron
+node_modules/
+dist/
+.electron/
+npm-debug.log*
+
+## Swift / Xcode
+.build/
+.swiftpm/
+DerivedData/
+*.xcodeproj/xcuserdata/
+*.xcworkspace/xcuserdata/
+
+## macOS
+.DS_Store
+
+## Editors
+.idea/
+.vscode/
+
+## Local agent artifacts
+.agent/

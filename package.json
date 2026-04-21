@@ -1,0 +1,50 @@
+{
+  "name": "duplicate-me-desktop",
+  "version": "0.1.0",
+  "description": "Electron desktop shell for DuplicateMe on macOS.",
+  "author": "Yakov Radchenko",
+  "private": true,
+  "type": "module",
+  "main": "electron/main.mjs",
+  "scripts": {
+    "desktop:dev": "swift build && electron .",
+    "desktop:icon": "swift scripts/generate-icon.swift",
+    "desktop:backend:bundle": "node scripts/prepare-electron-backend.mjs",
+    "desktop:dir": "npm run desktop:icon && npm run desktop:backend:bundle && electron-builder --mac dir",
+    "desktop:notarize:app": "node scripts/notarize.mjs --app",
+    "desktop:notarize:dmg": "node scripts/notarize.mjs --dmg",
+    "desktop:dmg": "npm run desktop:dir && npm run desktop:notarize:app && node scripts/build-dmg.mjs && npm run desktop:notarize:dmg"
+  },
+  "devDependencies": {
+    "electron": "^36.2.1",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "dev.duplicateme.desktop",
+    "productName": "DuplicateMe",
+    "electronDist": "node_modules/electron/dist",
+    "files": [
+      "electron/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": ".electron/backend",
+        "to": "backend",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "directories": {
+      "output": "dist/electron"
+    },
+    "mac": {
+      "icon": "electron/assets/DuplicateMe.icns",
+      "category": "public.app-category.utilities",
+      "target": [
+        "dir"
+      ]
+    }
+  }
+}

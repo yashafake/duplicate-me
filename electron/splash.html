@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DuplicateMe</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #efe6d8;
+      --panel: rgba(255, 252, 247, 0.88);
+      --ink: #1b1815;
+      --muted: #665d53;
+      --accent: #d96d3f;
+      --line: rgba(89, 69, 49, 0.12);
+      font-family: "SF Pro Display", "Helvetica Neue", sans-serif;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #12100d;
+        --panel: rgba(30, 26, 21, 0.88);
+        --ink: #f4ede0;
+        --muted: #b8ab98;
+        --accent: #ff8c59;
+        --line: rgba(225, 207, 182, 0.14);
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(circle at top left, rgba(217, 109, 63, 0.18), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(88, 140, 110, 0.12), transparent 35%),
+        var(--bg);
+      color: var(--ink);
+    }
+
+    .shell {
+      width: min(560px, calc(100vw - 48px));
+      padding: 28px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 60px rgba(56, 39, 19, 0.14);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 3vw, 2.6rem);
+      line-height: 0.96;
+    }
+
+    p {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.45;
+    }
+
+    .meter {
+      margin-top: 24px;
+      height: 10px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(217, 109, 63, 0.12);
+      border: 1px solid rgba(217, 109, 63, 0.16);
+    }
+
+    .meter::after {
+      content: "";
+      display: block;
+      width: 32%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, rgba(217, 109, 63, 0.45), var(--accent));
+      animation: slide 1.4s ease-in-out infinite;
+    }
+
+    .meta {
+      margin-top: 18px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      border-radius: 999px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      background: rgba(255,255,255,0.14);
+      font-size: 0.9rem;
+    }
+
+    @keyframes slide {
+      0% { transform: translateX(-120%); }
+      100% { transform: translateX(320%); }
+    }
+  </style>
+</head>
+<body>
+  <section class="shell">
+    <p class="eyebrow">Desktop Shell</p>
+    <h1>Starting DuplicateMe</h1>
+    <p>The Swift scan engine is launching locally. This window will switch into the review workspace as soon as the backend announces its URL.</p>
+    <div class="meter"></div>
+    <div class="meta">
+      <span class="pill">Local backend</span>
+      <span class="pill">No browser tab required</span>
+      <span class="pill">macOS desktop shell</span>
+    </div>
+  </section>
+</body>
+</html>
+
