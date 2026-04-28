@@ -13,7 +13,7 @@ let package = Package(
         .executable(name: "duplicate-me", targets: ["ScanCLI"])
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-testing.git", from: "0.14.0")
+        .package(url: "https://github.com/apple/swift-testing.git", from: "6.3.1")
     ],
     targets: [
         .target(
