@@ -16,8 +16,8 @@
     "desktop:dmg": "npm run desktop:dir && npm run desktop:notarize:app && node scripts/build-dmg.mjs && npm run desktop:notarize:dmg"
   },
   "devDependencies": {
-    "electron": "^36.2.1",
-    "electron-builder": "^26.0.12"
+    "electron": "^42.4.1",
+    "electron-builder": "^26.15.3"
   },
   "build": {
     "appId": "dev.duplicateme.desktop",
